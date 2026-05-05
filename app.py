@@ -1,20 +1,21 @@
 import streamlit as st
-import pandas as pd
-import altair as alt
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.prompts import PromptTemplate
 
-# --- Dashboard Title ---
+
 st.title("🌍 Analytical Dashboard: Water Footprint in Agriculture & Animal Products")
 st.write("Explore and compare water usage across crops and animal products with interactive charts and AI explanations.")
 
-# --- LangChain Setup with Google Gemini ---
+# Load Gemini model with your Google AI key
 llm = ChatGoogleGenerativeAI(
-    model="gemini-pro",
+    model="gemini-pro",  # or "gemini-pro-vision" if you need multimodal
     google_api_key=st.secrets["GOOGLE_API_KEY"],
     temperature=0.3
 )
 
+# Example usage
+prompt = "Explain the water footprint of rice in simple analytical terms."
+response = llm.invoke(prompt)
+st.write(response.content)
 
 prompt_template = PromptTemplate(
     input_variables=["topic"],
