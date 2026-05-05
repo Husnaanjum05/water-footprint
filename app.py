@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-from langchain_openai import OpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 
 # --- Dashboard Title ---
@@ -9,7 +9,10 @@ st.title("🌍 Analytical Dashboard: Water Footprint in Agriculture & Animal Pro
 st.write("Explore and compare water usage across crops and animal products with interactive charts and AI explanations.")
 
 # --- LangChain Setup ---
-llm = OpenAI(temperature=0.3)
+
+
+llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key="AIzaSyDU-_y-ff_SlvtJo7zkJQ5Aq_EMoAuI10A")
+
 
 prompt_template = PromptTemplate(
     input_variables=["topic"],
