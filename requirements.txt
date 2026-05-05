@@ -1,6 +1,8 @@
 streamlit
 pandas
-openai
+altair
 langchain
 langchain-core
-langchain-openai
+langchain-google-genai
+google-generativeai
+
