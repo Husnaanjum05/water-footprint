@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from langchain_openai import OpenAI
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 
 # --- Dashboard Title ---
 st.title("🌍 Water Footprint of Agricultural Products")
