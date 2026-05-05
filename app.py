@@ -11,9 +11,10 @@ st.write("Explore and compare water usage across crops and animal products with 
 # --- LangChain Setup with Google Gemini ---
 llm = ChatGoogleGenerativeAI(
     model="gemini-pro",
-    google_api_key=st.secrets["GOOGLE_API_KEY"],  # safer for Streamlit Cloud
+    google_api_key=st.secrets["GOOGLE_API_KEY"],
     temperature=0.3
 )
+
 
 prompt_template = PromptTemplate(
     input_variables=["topic"],
