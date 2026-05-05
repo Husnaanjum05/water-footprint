@@ -8,11 +8,12 @@ from langchain_core.prompts import PromptTemplate
 st.title("🌍 Analytical Dashboard: Water Footprint in Agriculture & Animal Products")
 st.write("Explore and compare water usage across crops and animal products with interactive charts and AI explanations.")
 
-# --- LangChain Setup ---
-
-
-llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key="AIzaSyDU-_y-ff_SlvtJo7zkJQ5Aq_EMoAuI10A")
-
+# --- LangChain Setup with Google Gemini ---
+llm = ChatGoogleGenerativeAI(
+    model="gemini-pro",
+    google_api_key=st.secrets["GOOGLE_API_KEY"],  # safer for Streamlit Cloud
+    temperature=0.3
+)
 
 prompt_template = PromptTemplate(
     input_variables=["topic"],
@@ -50,8 +51,7 @@ if view == "Crop Comparison":
     crop = st.selectbox("Select a Crop for AI Explanation:", df_crops["Crop"])
     prompt = prompt_template.format(topic=crop)
     response = llm.invoke(prompt)
-    st.write(response)
-
+    st.write(response.content)
 
 # --- Animal Product Analysis ---
 elif view == "Animal Product Comparison":
@@ -66,8 +66,7 @@ elif view == "Animal Product Comparison":
     animal = st.selectbox("Select an Animal Product for AI Explanation:", df_animals["Animal Product"])
     prompt = prompt_template.format(topic=animal)
     response = llm.invoke(prompt)
-    st.write(response)
-
+    st.write(response.content)
 
 # --- Combined Analysis ---
 elif view == "Combined Analysis":
