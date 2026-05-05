@@ -44,10 +44,10 @@ if view == "Crop Comparison":
     ).properties(width=600)
     st.altair_chart(chart)
     
-   crop = st.selectbox("Select a Crop for AI Explanation:", df_crops["Crop"])
-prompt = prompt_template.format(topic=crop)
-response = llm.invoke(prompt)
-st.write(response)
+    crop = st.selectbox("Select a Crop for AI Explanation:", df_crops["Crop"])
+    prompt = prompt_template.format(topic=crop)
+    response = llm.invoke(prompt)
+    st.write(response)
 
 
 # --- Animal Product Analysis ---
@@ -61,9 +61,9 @@ elif view == "Animal Product Comparison":
     st.altair_chart(chart)
     
     animal = st.selectbox("Select an Animal Product for AI Explanation:", df_animals["Animal Product"])
-prompt = prompt_template.format(topic=animal)
-response = llm.invoke(prompt)
-st.write(response)
+    prompt = prompt_template.format(topic=animal)
+    response = llm.invoke(prompt)
+    st.write(response)
 
 
 # --- Combined Analysis ---
