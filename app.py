@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from langchain.llms import OpenAI
+from langchain_openai import OpenAI
 from langchain.prompts import PromptTemplate
 
 # --- Dashboard Title ---
