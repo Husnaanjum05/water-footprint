@@ -51,9 +51,22 @@ st.title("Interactive Water Footprint Dashboard")
 
 # Metric Summary Row
 m1, m2, m3 = st.columns(3)
+
+# 1. Count of selected crops
 m1.metric("Selected Crops", len(filtered_df))
-m2.metric("Highest Total Footprint", f"{filtered_df['Total_Footprint'].max():,} L/kg")
-m3.metric("Avg Blue Water", f"{int(filtered_df['Blue_Water'].mean()):,} L/kg")
+
+# 2. Highest footprint (Only calculate if the dataframe isn't empty)
+if not filtered_df.empty:
+    max_footprint = filtered_df['Total_Footprint'].max()
+    m2.metric("Highest Total Footprint", f"{max_footprint:,} L/kg")
+    
+    # 3. Average Blue Water (Safely convert to int)
+    avg_blue = filtered_df['Blue_Water'].mean()
+    m3.metric("Avg Blue Water", f"{int(avg_blue):,} L/kg")
+else:
+    m2.metric("Highest Total Footprint", "0 L/kg")
+    m3.metric("Avg Blue Water", "0 L/kg")
+    st.warning("No data selected. Please choose a category in the sidebar.")
 
 # Tabs for Organization
 tab1, tab2, tab3 = st.tabs(["📊 Visual Analytics", "🤖 AI Data Expert", "📄 Raw Data"])
