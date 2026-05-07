@@ -3,13 +3,11 @@ import pandas as pd
 import plotly.express as px
 import os
 
-# 1. Modern Gemini & LangChain Imports
+# Modern Gemini & LangChain Imports
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_experimental.agents import create_pandas_dataframe_agent
 
-# NOTE: We no longer import AgentType from langchain.agents.agent_types
-# In 2026, we use string-based identifiers or import directly from langchain.agents
-from langchain.agents import AgentType 
+# REMOVE THIS LINE: from langchain.agents import AgentType
 
 # 2. Initialize Gemini
 # (Make sure GOOGLE_API_KEY is in your Streamlit Secrets)
@@ -20,7 +18,7 @@ agent = create_pandas_dataframe_agent(
     llm, 
     df, 
     verbose=True, 
-    agent_type="tool-calling", # This string replaces the old AgentType enum
+    agent_type="tool-calling", # This is the modern standard
     allow_dangerous_code=True
 )
 
