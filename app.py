@@ -4,7 +4,7 @@ import plotly.express as px
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_experimental.agents import create_pandas_dataframe_agent
-from langchain.agents.agent_types import AgentType
+from langchain.agents.agent_types import AgentType  # Line 7
 
 # --- 1. CONFIGURATION & API SETUP ---
 st.set_page_config(page_title="AgriWater AI Dashboard", layout="wide", page_icon="💧")
