@@ -1,0 +1,6 @@
+Crop,Category,Region,Blue_Water (L/kg),Green_Water (L/kg),Grey_Water (L/kg),Sustainability_Score
+Bovine Meat,Animal,Global,550,14400,450,2/10
+Almonds,Nuts,California,10200,1500,1100,4/10
+Lentils,Pulses,India,150,4200,100,9/10
+Apples,Fruit,Europe,70,650,100,8/10
+Chocolate,Luxury,West Africa,1000,15000,1100,3/10
