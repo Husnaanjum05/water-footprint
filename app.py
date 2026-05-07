@@ -1,10 +1,23 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_experimental.agents import create_pandas_dataframe_agent
-from langchain.agents import AgentType
+
+# In 2026, AgentType is directly under langchain.agents
+from langchain.agents import AgentType 
+
+# Initialize your LLM
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0)
+
+# Create the agent
+agent = create_pandas_dataframe_agent(
+    llm, 
+    df, 
+    verbose=True, 
+    agent_type="tool-calling", # This works perfectly with Gemini
+    allow_dangerous_code=True
+)
 
 # --- 1. CONFIGURATION & API SETUP ---
 st.set_page_config(page_title="AgriWater AI Dashboard", layout="wide", page_icon="💧")
