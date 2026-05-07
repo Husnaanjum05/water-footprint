@@ -1,9 +1,9 @@
 streamlit
 pandas
 plotly
-langchain
-langchain-google-genai
-langchain-experimental
+langchain==0.1.16
+langchain-google-genai==1.0.2
+langchain-experimental==0.0.57
 google-generativeai
 python-dotenv
 
