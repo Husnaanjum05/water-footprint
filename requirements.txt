@@ -1,8 +1,9 @@
 streamlit
 pandas
-altair
+plotly
 langchain
-langchain-core
 langchain-google-genai
+langchain-experimental
 google-generativeai
+python-dotenv
 
