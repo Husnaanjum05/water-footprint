@@ -1,27 +1,34 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 import os
-
-# Modern Gemini & LangChain Imports
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_experimental.agents import create_pandas_dataframe_agent
 
-# REMOVE THIS LINE: from langchain.agents import AgentType
+# 1. LOAD DATA FIRST
+@st.cache_data
+def load_data():
+    # Example data - replace with your actual CSV loading
+    data = {
+        'Crop': ['Almonds', 'Rice', 'Wheat'],
+        'Blue_Water': [10200, 1025, 342],
+        'Total_Footprint': [16000, 2500, 1300]
+    }
+    return pd.DataFrame(data)
 
-# 2. Initialize Gemini
-# (Make sure GOOGLE_API_KEY is in your Streamlit Secrets)
+# This creates the 'df' variable
+df = load_data() 
+
+# 2. INITIALIZE LLM
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0)
 
-# 3. Create the Agent (Simplified for 2026)
+# 3. CREATE AGENT (Using the 'df' defined above)
 agent = create_pandas_dataframe_agent(
     llm, 
-    df, 
+    df, # This is line 19 - it will now find the 'df' variable
     verbose=True, 
-    agent_type="tool-calling", # This is the modern standard
+    agent_type="tool-calling", 
     allow_dangerous_code=True
 )
-
 # --- 1. CONFIGURATION & API SETUP ---
 st.set_page_config(page_title="AgriWater AI Dashboard", layout="wide", page_icon="💧")
 
